@@ -1,0 +1,160 @@
+
+body {
+  margin: 0%;
+}
+
+#banner {
+  display: flex;
+  justify-content: center;
+  background: rgb(218,218,218);
+  background: linear-gradient(87deg, rgba(218,218,218,1) 62%, rgba(154,170,154,1) 83%, rgba(124,159,123,1) 100%); 
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+}
+
+.sticky {
+  max-height: 150px;
+  width: 100%;
+}
+
+
+#main-nav {
+ position: absolute;
+ right: 0;
+ bottom: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  margin-top: 70px;
+  margin-right: 20px;
+  background-color: #394867;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+nav a {
+  color: #9BA4B5;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+#body-juego {
+  background-color: rgba(218,218,218,1);
+}
+
+.h1-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #394867;
+  border-top: 3px solid #394867;
+  margin: 0%;
+}
+
+.container-juego {
+  display: flex;
+  flex-direction: row;
+}
+
+.izq {
+  height: 100%;
+  width: 20%;
+  padding-top: 1%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.izq img {
+  width: 200px;
+}
+
+.izq button {
+  width: 30%;
+  height: 25px;
+  border-radius: 20px;
+  background-color: #394867;
+  text-transform: uppercase;
+  color: white;
+}
+
+.der {
+  margin-left: 0%;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-left: 2%;
+  align-items: left;
+  justify-content: left;
+  height: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: 700px;
+}
+
+.juegos{
+  display: flex;
+  width: 100%;
+  height: 430px;
+}
+
+  .juegos img{
+width: 0px;
+flex-grow: 1;
+object-fit: cover;
+opacity: .8;
+transition:0.5s ease;
+  }
+
+.juegos img:hover{
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter:contrast (120%)
+}
+
+.container-index{
+  display: flex;
+  flex-direction: row;
+}
+.coversistema {
+  width: 200px;
+  height: 200px;
+}
+.sistema-juego {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-left: 50%;
+}
+
+#contenedor-juegos{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-left: 15%;
+  margin-right: 2%;
+}
