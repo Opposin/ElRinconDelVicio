@@ -4,5 +4,5 @@ document.getElementById("myButton").onclick = function () {
 
 window.addEventListener("scroll", function(){
     var header = document.querySelector("header")
-    header.classList.toggle("sticky", window.scrollY > 200)
+    header.classList.toggle("sticky", window.scrollY > 15)
 })
