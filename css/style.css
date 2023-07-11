@@ -2,7 +2,7 @@
 body {
   margin: 0%;
     font-family: 'FuentePixel';
-    src: url('.')
+    src: url('./FuentePixel.TTF')
 }
 
 #banner {
