@@ -1,8 +1,10 @@
 
 body {
   margin: 0%;
-    font-family: 'FuentePixel';
-    src: url('./FuentePixel.TTF')
+}
+
+.body-style{
+font-family: 'common_pixelregular';
 }
 
 #banner {
