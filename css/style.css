@@ -3,6 +3,12 @@ body {
   margin: 0%;
 }
 
+
+.main-background{
+    background-image url(.../img/backmsg3.jpeg);
+    opacity: 0.6;
+  }
+    
 .body-style{
 font-family: 'common_pixelregular';
 }
@@ -210,6 +216,5 @@ transition:0.5s ease;
   height: 300px;
 }
 
-/*###Fuente de Texto, Hay que probar###
-font-family: 'Common Pixel', sans-serif;*/
+
                                                 
