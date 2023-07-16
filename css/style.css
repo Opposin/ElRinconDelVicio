@@ -4,16 +4,23 @@ body {
 }
 
 
-.background-main{
-  background-image: url(.../img/backmsg3.jpeg);
-  }
-
-.background-image{
-  opacity: 0,8;
-}
+body {
+  heigh:665px;
+  background-image: url(".../img/mgs");
+  background-size: 10rem;
     
 .body-style{
 font-family: 'common_pixelregular';
+}
+
+.main-back{
+  height: 800px;
+  background-image: url(".../img/backmsg3.jpeg");
+  background-size: cover;
+  background-size: 25rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 #banner {
