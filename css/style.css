@@ -3,10 +3,9 @@
   max-width: 1200px; /* = 1200px; */
   margin: 0 auto 0 auto;
 }
-
 .seccion{
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .centrar-texto{
   text-align: center;
@@ -41,6 +40,7 @@ body {
   background: rgb(218,218,218);
   background: linear-gradient(87deg, rgba(218,218,218,1) 62%, rgba(154,170,154,1) 83%, rgba(124,159,123,1) 100%); 
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 header {
@@ -98,6 +98,7 @@ nav a {
   border-bottom: 3px solid #394867;
   border-top: 3px solid #394867;
   margin: 0%;
+  margin-bottom: 50px;
 }
 
 .container-juego {
@@ -152,12 +153,13 @@ iframe {
 }
 
 .juegos img{
-width: 0px;
-flex-grow: 1;
-object-fit: cover;
-opacity: .8;
-transition:0.5s ease;
-  }
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: .8;
+  transition:0.5s ease;
+  margin-bottom: 20px;
+}
 
 .juegos img:hover{
   cursor: crosshair;
@@ -172,29 +174,22 @@ transition:0.5s ease;
 }
 .container-index .sistemas {
   flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 .sistema-juego {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
+  justify-content: center; 
 }
 .coversistema {
   width: 200px;
   height: 200px;
   margin-bottom: 20px;
 }
-
-
-/* .sistema-juego {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15%;
-  width: 100%;
-  margin-left: 25%;
-} */
 
 
 #contenedor-juegos{
