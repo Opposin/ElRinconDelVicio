@@ -10,6 +10,10 @@
 .centrar-texto{
   text-align: center;
 }
+.contenido-centrado{
+  max-width: 800px;
+}
+
 body {
   margin: 0%;
 }
@@ -122,12 +126,16 @@ nav a {
 }
 
 .izq button {
-  width: 30%;
-  height: 25px;
   border-radius: 20px;
+  color: #D9D9D9;
   background-color: #394867;
-  text-transform: uppercase;
-  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 30px;
+  margin-top: 30px;
+  display: inline-block;
+  text-align: center;
+  border: none;
 }
 
 .der {
@@ -143,7 +151,7 @@ nav a {
 
 iframe {
   width: 100%;
-  height: 700px;
+  height: 500px;
 }
 
 .juegos{
@@ -156,7 +164,7 @@ iframe {
   width: 0px;
   flex-grow: 1;
   object-fit: cover;
-  opacity: .8;
+  opacity: .9;
   transition:0.5s ease;
   margin-bottom: 30px;
 }
@@ -165,7 +173,7 @@ iframe {
   cursor: crosshair;
   width: 300px;
   opacity: 1;
-  filter:contrast (120%)
+  filter:contrast(120%)
 }
 
 .container-index {
