@@ -55,13 +55,6 @@ header {
   height: 500px;
 }
 
-.sticky {
-  position: absolute;
-  max-height: 150px;
-  width: 100%;
-}
-
-
 #main-nav {
  position: absolute;
  right: 0;
