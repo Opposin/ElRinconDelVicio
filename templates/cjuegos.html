@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <main>
+        <div>
+            <div>
+                <form action="/crear_juego" method="POST" class="form-style">
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <input type="text" name="descripcion" placeholder="Descripcion">
+                    <input type="text" name="imagen" placeholder="URL de imagen">
+                    <input type="date" name="fecha_lanzamiento" placeholder="fecha_de_lanzamiento">
+                    <button type="submit"> Enviar </button>
+                </form>
+            </div>
+            <ul>
+                {% for juego in juegos %}
+                <li>
+                    <h1>{{juego.id}}</h1>
+                    <h1>{{juego.nombre}}</h1>
+                    <h1>{{juego.descripcion}}</h1>
+                    <h1>{{juego.imagen}}</h1>
+                    <h1>{{juego.fecha_lanzamiento}}</h1>
+
+                    <a href="/delete/{{juego.id}}">delete</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div>
+            </div>
+        </div>
+    </main>    
+</body>
+</html>

@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElRinconDelVicio - Login</title>
-    <link rel="stylesheet" type="text/css" href="../css/style-login.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-login.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <body class="body-style">
 </head>
 <body>
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" placeholder="Crear ua contraseña" class="password" required>
+                        <input type="password" placeholder="Crear una contraseña" class="password" required>
                     </div>
 
                     <div class="field input-field">
@@ -83,7 +83,7 @@
 
 
     <!-- scrip prueba -->
-    <script src="../js/script-prueba.js"></script>
+    <script src="{{ url_for('static', filename='js/script-prueba.js') }}"></script>
 
 
 

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "rdv"
+version = "0.1.0"
+description = "el rincon del vicio poetry"
+authors = ["Your Name <you@example.com>"]
+license = "n"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.2"
+SQLAlchemy = "^2.0.19"
+flask-sqlalchemy = "^3.0.5"
+flask-marshmallow = "^0.15.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
