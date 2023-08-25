@@ -6,7 +6,6 @@ import os
 direccion_archivo = os.path.abspath(os.getcwd())+"\database\datos.db"
 app = Flask(__name__)
 app.app_context().push()
-#esto agrega la base de datos al programa
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+direccion_archivo
 db = SQLAlchemy(app)
 
@@ -42,9 +41,9 @@ def nosotros():
     return render_template('nosotros.html', juegos = juegos)
 
 @app.route('/juego/<id>', methods=['GET'])
-def visualizar_juego():
-    juego = juego.query.filter_by(id=int(id))
-    return render_template('index.html', juego = juego)
+def visualizar_juego(id):
+    game = juego.query.get(id)
+    return render_template('juego.html', game = game)
 
 @app.route('/cjuegos')
 def creacion_juegos():

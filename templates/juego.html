@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InserteJuegoAqui</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <script src="../js/script.js"></script>
     <body class="body-style">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -14,37 +14,36 @@
 <body id="body-juego">
     <header id="main-header">
         <nav id="main-nav">
-            <ul>
+          <ul>
             <li>
-                <a class="nav-link home" href="index.html">Inicio</a>
+              <a class="nav-link home" href="/">Inicio</a>
             </li>
             <li>
-                <a class="nav-link game" href="login.html">Log-in</a>
+              <a class="nav-link game" href="/login">Log-in</a>
             </li>
             <li>
-                <a class="nav-link us" href="nosotros.html">Acerca de nosotros</a>
+              <a class="nav-link us" href="/nosotros">Acerca de nosotros</a>
             </li>
-            </ul>
+          </ul>
         </nav>
-    </header>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <div id="banner">
-        <img src="../img/banner.jpeg" alt="Banner de la pagina">
-    </div>
-    <h1 class="h1-style">Half-Life</h1>
+      </header>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+      <div id="banner">
+        <img src="{{ url_for('static', filename='img/banner.jpeg') }}" alt="Banner de la pagina">
+      </div>
+    <h1 class="h1-style">{{game.nombre}}</h1>
     <main class="container-index contenedor seccion">
         <div class="izq centrar-texto contenido-centrado">
-            <img class="seccion" src="../img/juegos/halflife.jpg" alt="Imagen Cover de Half-Life pc">
-            <h3>Fecha de salida: 19/11/1998</h3>
-            <h3>Disponible en: PC, Ps2, Dreamcast</h3>
+            <h3>Fecha de salida: {{game.fecha_lanzamiento}}</h3>
+            <h3>Disponible en: {{game.sistema_juego}}</h3>
             <button onclick="location.href='https://store.steampowered.com/app/70/HalfLife/'">Comprar</button>
         </div>
         <div class="der contenido-centrado">
             <h2>Descripcion</h2>
-            <p class="seccion">Un clasico lanzado en el año 1998 que revoluciono el mercado de los first person shooters, vive el incidente black mesa tal y como fue planeado originalmente.<br>
-            con entornos 3d renderizados en tiempo real, una historia intradiegetica contada sin ningun tipo de cinematica una forma totalmente novedosa de contar una historia en su epoca de salida.</p>
-            <h2 class="seccion">Gameplay video</h2>
-            <iframe src="https://www.youtube.com/embed/5XZM2A_IX6M" title="Half life Completo Español PC (1998)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="seccion">{{game.descripcion}}</p>
+            <h2 class="seccion">Cover Art</h2>
+            <img src="{{ game.imagen }}" alt="Imagen Cover de {{game.nombre}}" onclick="javascript:window.location='/juego/{{game.id}}';">
+            <!--<iframe src="https://www.youtube.com/embed/5XZM2A_IX6M" title="Half life Completo Español PC (1998)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
         </div>
     </main>
     <footer class="site-footer seccion">
