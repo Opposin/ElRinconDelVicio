@@ -6,27 +6,30 @@ import os
 direccion_archivo = os.path.abspath(os.getcwd())+"\database\datos.db"
 app = Flask(__name__)
 app.app_context().push()
+#esto agrega la base de datos al programa
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+direccion_archivo
 db = SQLAlchemy(app)
 
+#modelo de datos de cada juego
 class juego(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), unique=True)
     descripcion = db.Column(db.String(500))
+    sistema_juego = db.Column(db.String(50))
     imagen = db.Column(db.String(50))
     fecha_lanzamiento = db.Column(db.Date, default=datetime.utcnow)
     
-    def __init__(self, nombre, descripcion, imagen, fecha_lanzamiento):
+    def __init__(self, nombre, descripcion, sistema_juego, imagen, fecha_lanzamiento):
         self.nombre = nombre
         self.descripcion = descripcion
+        self.sistema_juego = sistema_juego
         self.imagen = imagen
         self.fecha_lanzamiento = fecha_lanzamiento
     
-
 @app.route('/')
 def index():
-    juegos = juego.query.all()
-    return render_template('index.html', juegos = juegos)
+    #juegos = juego.query.all()
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
@@ -52,10 +55,11 @@ def creacion_juegos():
 def crear_juego():
     nombre = request.form['nombre']
     descripcion = request.form['descripcion']
+    sistema_juego = request.form['sistema_juego']
     imagen = request.form['imagen']
     fecha = request.form['fecha_lanzamiento']
     fecha_lanzamiento = datetime.strptime(fecha,'%Y-%m-%d')
-    entrada = juego(nombre, descripcion,imagen , fecha_lanzamiento)
+    entrada = juego(nombre, descripcion, sistema_juego, imagen, fecha_lanzamiento)
     try:
         db.session.add(entrada)
         db.session.commit()
@@ -72,5 +76,7 @@ def delete(id):
 
     
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
     

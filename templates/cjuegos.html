@@ -14,6 +14,7 @@
                 <form action="/crear_juego" method="POST" class="form-style">
                     <input type="text" name="nombre" placeholder="Nombre">
                     <input type="text" name="descripcion" placeholder="Descripcion">
+                    <input type="text" name="sistema_juego" placeholder="sistema del juego">
                     <input type="text" name="imagen" placeholder="URL de imagen">
                     <input type="date" name="fecha_lanzamiento" placeholder="fecha_de_lanzamiento">
                     <button type="submit"> Enviar </button>
@@ -25,6 +26,7 @@
                     <h1>{{juego.id}}</h1>
                     <h1>{{juego.nombre}}</h1>
                     <h1>{{juego.descripcion}}</h1>
+                    <h1>{{juego.sistema_juego}}</h1>
                     <h1>{{juego.imagen}}</h1>
                     <h1>{{juego.fecha_lanzamiento}}</h1>
 
