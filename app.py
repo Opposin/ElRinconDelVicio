@@ -28,8 +28,8 @@ class juego(db.Model):
     
 @app.route('/')
 def index():
-    #juegos = juego.query.all()
-    return render_template('index.html')
+    juegos = juego.query.all()
+    return render_template('index.html', juegos = juegos)
 
 @app.route('/login')
 def login():
@@ -41,10 +41,10 @@ def nosotros():
     juegos = juego.query.all()
     return render_template('nosotros.html', juegos = juegos)
 
-@app.route('/juego', methods=['GET'])
+@app.route('/juego/<id>', methods=['GET'])
 def visualizar_juego():
-    juegos = juego.query.all()
-    return render_template('index.html', juegos = juegos)
+    juego = juego.query.filter_by(id=int(id))
+    return render_template('index.html', juego = juego)
 
 @app.route('/cjuegos')
 def creacion_juegos():

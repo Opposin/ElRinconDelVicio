@@ -47,20 +47,34 @@
     <div id="contenedor-juegos">
       <h2 class="seccion">Juegos-PC</h2>
       <section class="juegos">
+        {% for juego in juegos %}
+          {% if juego.sistema_juego == "pc" %}
+            <img class="img-juego" src="{{ juego.imagen }}" alt="Imagen Cover de {{juego.nombre}}" onclick="javascript:window.location='/juego/{{juego.id}}';">
+          {% endif %}
+        {% endfor %}
+        <!--
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/halflife.jpg') }}" alt="Imagen Cover de Half-Life">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/cs.png') }}" alt="Imagen cover de Counter-strike">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/cod2.png') }}" alt="Imagen Cover de Call of duty 2">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/pathologic.jpg') }}" alt="Imagen cover de Pathologic">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/terraria.jpeg') }}" alt="Imagen cover de Terraria">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/lunky2.jpg') }}" alt="Imagen cover de Spelunky 2">
+        -->
       </section>
 
       <h2 class="seccion">Juegos-PS2</h2>
       <section class="juegos">
+        {% for juego in juegos %}
+          {% if juego.sistema_juego == "ps2" %}
+            <img class="img-juego" src="{{ juego.imagen }}" alt="Imagen Cover de {{juego.nombre}}" onclick="javascript:window.location='/juego/{{juego.id}}';">
+          {% endif %}
+        {% endfor %}
+        <!--
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/sh2.jpg') }}" alt="Imagen Cover de Silent Hill 2">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/gow2.jpg') }}" alt="Imagen cover de God of War 2">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/siren.jpg') }}" alt="Imagen Cover de Siren">
         <img class="img-juego" src="{{ url_for('static', filename='img/juegos/re4.png') }}" alt="Imagen cover de Resident evil 4">
+        -->
       </section>
     </div>
   </div>
