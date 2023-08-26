@@ -1,8 +1,18 @@
 *{
-    background-color: aqua;
 
 }
 * img{
     width: 300px;
     height: 700px;
+}
+
+#desc{
+
+}
+
+#formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

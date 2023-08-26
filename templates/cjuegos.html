@@ -10,24 +10,26 @@
 <body>
     <main>
         <div>
-            <div>
+            <div id="formulario">
                 <form action="/crear_juego" method="POST" class="form-style">
                     <input type="text" name="nombre" placeholder="Nombre">
-                    <input type="text" name="descripcion" placeholder="Descripcion">
+                    <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
                     <input type="text" name="sistema_juego" placeholder="sistema del juego">
                     <input type="text" name="imagen" placeholder="URL de imagen">
-                    <input type="date" name="fecha_lanzamiento" placeholder="fecha_de_lanzamiento">
+                    <input type="text" name="url_gameplay" placeholder="URL de gameplay">
+                    <input type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
                     <button type="submit"> Enviar </button>
                 </form>
             </div>
-            <ul>
+            <ul id="representacione">
                 {% for juego in juegos %}
-                <li>
+                <li id="juegos-guardados">
                     <h1>{{juego.id}}</h1>
                     <h1>{{juego.nombre}}</h1>
                     <h1>{{juego.descripcion}}</h1>
                     <h1>{{juego.sistema_juego}}</h1>
                     <h1>{{juego.imagen}}</h1>
+                    <h1>{{juego.url_gameplay}}</h1>
                     <h1>{{juego.fecha_lanzamiento}}</h1>
 
                     <a href="/delete/{{juego.id}}">delete</a>

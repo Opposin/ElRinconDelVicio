@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InserteJuegoAqui</title>
+    <title>ElRinconDelVicio - {{game.nombre}}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <script src="../js/script.js"></script>
@@ -34,6 +34,8 @@
     <h1 class="h1-style">{{game.nombre}}</h1>
     <main class="container-index contenedor seccion">
         <div class="izq centrar-texto contenido-centrado">
+            <h2 class="seccion">Cover Art</h2>
+            <img src="{{ game.imagen }}" alt="Imagen Cover de {{game.nombre}}">
             <h3>Fecha de salida: {{game.fecha_lanzamiento}}</h3>
             <h3>Disponible en: {{game.sistema_juego}}</h3>
             <button onclick="location.href='https://store.steampowered.com/app/70/HalfLife/'">Comprar</button>
@@ -41,19 +43,24 @@
         <div class="der contenido-centrado">
             <h2>Descripcion</h2>
             <p class="seccion">{{game.descripcion}}</p>
-            <h2 class="seccion">Cover Art</h2>
-            <img src="{{ game.imagen }}" alt="Imagen Cover de {{game.nombre}}" onclick="javascript:window.location='/juego/{{game.id}}';">
-            <!--<iframe src="https://www.youtube.com/embed/5XZM2A_IX6M" title="Half life Completo Español PC (1998)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+            <h2>Gameplay</h2>
+            <iframe src="{{game.url_gameplay}}" title="{{game.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </main>
     <footer class="site-footer seccion">
         <div class="contenedor contenedor-footer">
             <nav class="navegacion">
-                <a href="login.html">Log-in</a>
-                <a href="nosotros.html">Acerca de nosotros</a>
+                <a href="/">Index</a>
+                <a href="/login">Log-in</a>
+                <a href="/nosotros">Acerca de nosotros</a>
             </nav>
             <p class="copyright">Todos los Derechos Reservados 2023 &copy;</p>
         </div>
       </footer>
 </body>
 </html>
+
+
+<!--"https://www.youtube.com/embed/4LMjbWDYsGs?list=RD4LMjbWDYsGs"
+https://www.youtube.com/watch?v=NdgWUeylzQk
+https://www.youtube.com/embed/NdgWUeylzQk-->

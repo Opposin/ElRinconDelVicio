@@ -15,14 +15,16 @@ class juego(db.Model):
     nombre = db.Column(db.String(50), unique=True)
     descripcion = db.Column(db.String(500))
     sistema_juego = db.Column(db.String(50))
-    imagen = db.Column(db.String(50))
+    imagen = db.Column(db.String(200))
+    url_gameplay = db.Column(db.String(200), default="null")
     fecha_lanzamiento = db.Column(db.Date, default=datetime.utcnow)
     
-    def __init__(self, nombre, descripcion, sistema_juego, imagen, fecha_lanzamiento):
+    def __init__(self, nombre, descripcion, sistema_juego, imagen, url_gameplay, fecha_lanzamiento):
         self.nombre = nombre
         self.descripcion = descripcion
         self.sistema_juego = sistema_juego
         self.imagen = imagen
+        self.url_gameplay = url_gameplay
         self.fecha_lanzamiento = fecha_lanzamiento
     
 @app.route('/')
@@ -56,9 +58,10 @@ def crear_juego():
     descripcion = request.form['descripcion']
     sistema_juego = request.form['sistema_juego']
     imagen = request.form['imagen']
+    url_gameplay = request.form['url_gameplay']
     fecha = request.form['fecha_lanzamiento']
     fecha_lanzamiento = datetime.strptime(fecha,'%Y-%m-%d')
-    entrada = juego(nombre, descripcion, sistema_juego, imagen, fecha_lanzamiento)
+    entrada = juego(nombre, descripcion, sistema_juego, imagen, url_gameplay, fecha_lanzamiento)
     try:
         db.session.add(entrada)
         db.session.commit()
