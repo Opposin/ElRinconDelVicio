@@ -1,14 +1,26 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 from datetime import datetime
 import os
 
 direccion_archivo = os.path.abspath(os.getcwd())+"\database\datos.db"
 app = Flask(__name__)
+app.secret_key = 'hihi2475'
 app.app_context().push()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+direccion_archivo
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
+class User(UserMixin):
+    def __init__(self, usuario, contrasenia):
+        self.usuario = usuario
+        self.contrasenia = contrasenia
+        
+    def get_id(self):
+        return self.usuario
+    
 #modelo de datos de cada juego
 class juego(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,16 +38,46 @@ class juego(db.Model):
         self.imagen = imagen
         self.url_gameplay = url_gameplay
         self.fecha_lanzamiento = fecha_lanzamiento
+        
+#class Usuario(db.Model):
+#    id = db.Column(db.Integer, primary_key=True)
+#    correo = db.Column(db.String(50), unique=True)
+#    contrasenia = db.Column(db.String(500))
     
+#    def __init__(self, correo, contrsenia):
+#        self.correo = correo
+#        self.contrasenia = contrsenia    
+
+@login_manager.user_loader
+def load_user(user_id):
+    return user if user.get_id() ==  user_id else None
+
+user = User('admin', '1234')
+
+login_manager.user_loader(load_user)
+              
 @app.route('/')
 def index():
     juegos = juego.query.all()
     return render_template('index.html', juegos = juegos)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    juegos = juego.query.all()
-    return render_template('Login.html', juegos = juegos)
+    if current_user.is_authenticated:
+        logout_user()
+        return redirect('/')
+    
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        contrasenia = request.form['contrasenia']
+        
+        if user.usuario == usuario and user.contrasenia == contrasenia:
+            login_user(user)
+            return redirect('/')
+    
+        return render_template('Login.html', error='Usuario o contraseña no valida.')    
+    
+    return render_template('Login.html')
 
 @app.route('/nosotros')
 def nosotros():
@@ -48,11 +90,13 @@ def visualizar_juego(id):
     return render_template('juego.html', game = game)
 
 @app.route('/cjuegos')
+@login_required
 def creacion_juegos():
     juegos = juego.query.all()
     return render_template('cjuegos.html', juegos = juegos)
 
 @app.route('/crear_juego', methods=['POST'])
+@login_required
 def crear_juego():
     nombre = request.form['nombre']
     descripcion = request.form['descripcion']
@@ -71,6 +115,7 @@ def crear_juego():
 
 
 @app.route('/delete/<id>')
+@login_required
 def delete(id):
     juego.query.filter_by(id=int(id)).delete()
     db.session.commit()

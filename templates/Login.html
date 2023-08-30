@@ -12,80 +12,25 @@
 </head>
 <body>
     <!-- Inicio sesión -->
-
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
                 <header>Login</header>
-                <form action="#">
+                <form action="/login" method="POST">
                     <div class="field input-field">
-                        <input type="email" placeholder="Igrese su email" class="input" required>
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" placeholder="Igrese su contraseña" class="password" required>
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-
-                    <div class="form-link">
-                        <!-- por el momento no lleva a nada  -->
-                        <a href="#" class="forgot-pass">Olvido su cotraseña?</a>   
-                    </div>
-
-                    <div class="field button-field">
-                        <button> Login</button>
-
-                    </div>
-                </form>
-
-                <div class="form-link">
-                    <span>¿No tienes una cuenta? <a href="#" class="link signup-link">Registrarse</a></span>
-                </div>
-            </div>
-
-
-        </div>
-
-        <!-- Registro -->
-
-        <div class="form signup">
-            <div class="form-content">
-                
-                <!-- animar titulo prox-->
-                <header>Registrarse <br> Bienvenido al vicio </header> 
-                
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder=" Ingresar su Email" class="input">
+                        <input type="text" name="usuario" placeholder="Igrese su usuario">
                     </div>
 
                     <div class="field input-field">
-                        <input type="password" placeholder="Crear una contraseña" class="password" required>
-                    </div>
-
-                    <div class="field input-field">
-                        <input type="password" placeholder="Confirmar contraseña" class="password" required>
+                        <input type="text" name="contrasenia" placeholder="Igrese su contraseña">
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
                     <div class="field button-field">
-                        <button>Registrarse</button>
+                        <button type="submit"> Login</button>
+
                     </div>
                 </form>
-
-                <div class="form-link">
-                    <span>¿Ya tienes una cuenta?<a href="#" class="link login-link"> Iniciar sesión</a></span>
-                </div>
-            </div>
-
         </div>
-    </section>
-
-
-    <!-- scrip prueba -->
-    <script src="{{ url_for('static', filename='js/script-prueba.js') }}"></script>
-
-
-
 </body>
 </html>
