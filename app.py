@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 from datetime import datetime
@@ -39,15 +39,6 @@ class juego(db.Model):
         self.url_gameplay = url_gameplay
         self.fecha_lanzamiento = fecha_lanzamiento
         
-#class Usuario(db.Model):
-#    id = db.Column(db.Integer, primary_key=True)
-#    correo = db.Column(db.String(50), unique=True)
-#    contrasenia = db.Column(db.String(500))
-    
-#    def __init__(self, correo, contrsenia):
-#        self.correo = correo
-#        self.contrasenia = contrsenia    
-
 @login_manager.user_loader
 def load_user(user_id):
     return user if user.get_id() ==  user_id else None
@@ -75,7 +66,7 @@ def login():
             login_user(user)
             return redirect('/')
     
-        return render_template('Login.html', error='Usuario o contraseña no valida.')    
+        return render_template('LoginE.html')    
     
     return render_template('Login.html')
 
@@ -121,7 +112,11 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('creacion_juegos'))
 
-    
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    flash('Usted no tiene accesso a esta pagina, debe logear.')
+    return redirect(url_for('login'))
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

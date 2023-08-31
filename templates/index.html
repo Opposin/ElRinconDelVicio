@@ -18,9 +18,18 @@
         <li>
           <a class="nav-link home" href="/">Inicio</a>
         </li>
+        {% if current_user.is_authenticated %}
         <li>
-          <a class="nav-link game" href="/login">Log-in</a>
+        <a class="nav-link game" href="/login">Cerrar sesion</a>
         </li>
+        <li>
+        <a class="nav-link game" href="/cjuegos">Modificar Catalogo</a>
+        </li>
+        {% else %}
+        <li>
+        <a class="nav-link game" href="/login">Log-in</a>
+        </li>
+        {% endif %}
         <li>
           <a class="nav-link us" href="/nosotros">Acerca de nosotros</a>
         </li>
