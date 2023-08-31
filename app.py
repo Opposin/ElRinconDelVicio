@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+#modelo de usuario admin
 class User(UserMixin):
     def __init__(self, usuario, contrasenia):
         self.usuario = usuario
@@ -38,20 +39,23 @@ class juego(db.Model):
         self.imagen = imagen
         self.url_gameplay = url_gameplay
         self.fecha_lanzamiento = fecha_lanzamiento
-        
+
 @login_manager.user_loader
 def load_user(user_id):
     return user if user.get_id() ==  user_id else None
 
+#cuenta usuario admin
 user = User('admin', '1234')
 
 login_manager.user_loader(load_user)
-              
+
+#ruta para el index de la pagina      
 @app.route('/')
 def index():
     juegos = juego.query.all()
     return render_template('index.html', juegos = juegos)
 
+#ruta de login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -70,22 +74,26 @@ def login():
     
     return render_template('Login.html')
 
+#ruta about-us
 @app.route('/nosotros')
 def nosotros():
     juegos = juego.query.all()
     return render_template('nosotros.html', juegos = juegos)
 
+#ruta visualizacion de juego individual
 @app.route('/juego/<id>', methods=['GET'])
 def visualizar_juego(id):
     game = juego.query.get(id)
     return render_template('juego.html', game = game)
 
+#ruta pagina modificacion de catalogo
 @app.route('/cjuegos')
 @login_required
 def creacion_juegos():
     juegos = juego.query.all()
     return render_template('cjuegos.html', juegos = juegos)
 
+#ruta para la creacion de un juego
 @app.route('/crear_juego', methods=['POST'])
 @login_required
 def crear_juego():
@@ -104,7 +112,7 @@ def crear_juego():
     except:
         return "no se pudo guardar"
 
-
+#ruta para la eliminacion de un jugo
 @app.route('/delete/<id>')
 @login_required
 def delete(id):
