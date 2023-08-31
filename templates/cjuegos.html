@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina de Agregado de juegos</title>
     <!-- Main css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 </head>
-<body>
+<body class="body-style">
+    <header id="main-header">
+        <nav id="main-nav">
+          <ul>
+            <li>
+              <a class="nav-link home" href="/">Inicio</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li>
+            <a class="nav-link game" href="/login">Cerrar sesion</a>
+            </li>
+            <li>
+            <a class="nav-link game" href="/cjuegos">Modificar Catalogo</a>
+            </li>
+            {% else %}
+            <li>
+            <a class="nav-link game" href="/login">Log-in</a>
+            </li>
+            {% endif %}
+            <li>
+              <a class="nav-link us" href="/nosotros">Acerca de nosotros</a>
+            </li>
+          </ul>
+        </nav>
+        </header>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <div id="banner">
+          <img src="{{ url_for('static', filename='img/banner.jpeg') }}" alt="Banner de la pagina">
+        </div>
     <main>
         <div>
-            <div id="formulario">
+            <div>
                 <form action="/crear_juego" method="POST" class="form-style">
                     <input type="text" name="nombre" placeholder="Nombre">
                     <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
@@ -21,15 +50,15 @@
                     <button type="submit"> Enviar </button>
                 </form>
             </div>
-            <ul id="representacione">
+            <ul id="representaciones">
                 {% for juego in juegos %}
                 <li id="juegos-guardados">
                     <h1>{{juego.id}}</h1>
                     <h1>{{juego.nombre}}</h1>
                     <h1>{{juego.descripcion}}</h1>
                     <h1>{{juego.sistema_juego}}</h1>
-                    <h1>{{juego.imagen}}</h1>
-                    <h1>{{juego.url_gameplay}}</h1>
+                    <img src="{{juego.imagen}}" alt="Imagen Cover de {{juego.nombre}}">
+                    <iframe src="{{juego.url_gameplay}}" title="{{juego.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <h1>{{juego.fecha_lanzamiento}}</h1>
 
                     <a href="/delete/{{juego.id}}">delete</a>

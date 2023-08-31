@@ -1,4 +1,6 @@
 /* Utilidades */
+a:visited { text-decoration: none; color:#D9D9D9; }
+
 .contenedor{
   max-width: 1200px; /* = 1200px; */
   margin: 0 auto 0 auto;
@@ -304,4 +306,20 @@ iframe {
 .img_dev {
   width: 300px;
   height: 300px;
+}
+#representaciones{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+#representaciones iframe{
+  width: 200px;
+  height: 200px;
+}
+#representaciones a{
+  color: black;
+}
+#representaciones img{
+  width: 200px;
+  height: 200px;
 }
