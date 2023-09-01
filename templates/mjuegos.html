@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina de Agregado de juegos</title>
+    <title>Pagina de modificacion de {{game.nombre}}</title>
     <!-- Main css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-    <script src="../js/script.js"></script>
 </head>
 <body class="body-style">
     <header id="main-header">
@@ -41,34 +40,38 @@
     <main>
         <div>
             <div>
-                <form action="/crear_juego/" method="POST" class="form-style">
-                  <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
-                  <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
-                  <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego">
-                  <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen">
-                  <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay">
-                  <input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
+                <form action="/modificar_juego/{{game.id}}" method="POST" class="form-style">
+                    <input id="id_juego" type="hidden" name="id">
+                    <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
+                    <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
+                    <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego">
+                    <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen">
+                    <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay">
+                    <input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
                     <button type="submit"> Enviar </button>
                 </form>
             </div>
             <ul id="representaciones">
-                {% for juego in juegos %}
                 <li id="juegos-guardados">
-                    <h1>{{juego.id}}</h1>
-                    <h1>{{juego.nombre}}</h1>
-                    <h1>{{juego.descripcion}}</h1>
-                    <h1>{{juego.sistema_juego}}</h1>
-                    <img src="{{juego.imagen}}" alt="Imagen Cover de {{juego.nombre}}">
-                    <iframe src="{{juego.url_gameplay}}" title="{{juego.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <h1>{{juego.fecha_lanzamiento}}</h1>
-                    <a href="/mjuego/{{juego.id}}">modificar</a>
-                    <a href="/delete/{{juego.id}}">delete</a>
+                    <h1>{{game.id}}</h1>
+                    <h1>{{game.nombre}}</h1>
+                    <h1>{{game.descripcion}}</h1>
+                    <h1>{{game.sistema_juego}}</h1>
+                    <img src="{{game.imagen}}" alt="Imagen Cover de {{game.nombre}}">
+                    <iframe src="{{game.url_gameplay}}" title="{{game.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <h1>{{game.fecha_lanzamiento}}</h1>
                 </li>
-                {% endfor %}
             </ul>
             <div>
             </div>
         </div>
     </main>    
+    <script>
+        document.getElementById("1nombre").defaultValue = "{{game.nombre}}"; 
+        document.getElementById("desc").defaultValue = "{{game.descripcion}}"; 
+        document.getElementById("sistema").defaultValue = "{{game.sistema_juego}}"; 
+        document.getElementById("imagen_juego").defaultValue = "{{game.imagen}}"; 
+        document.getElementById("url").defaultValue = "{{game.url_gameplay}}"; 
+    </script>
 </body>
 </html>

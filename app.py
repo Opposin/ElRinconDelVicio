@@ -86,7 +86,7 @@ def visualizar_juego(id):
     game = juego.query.get(id)
     return render_template('juego.html', game = game)
 
-#ruta pagina modificacion de catalogo
+#ruta pagina general para ajustes de catalogo
 @app.route('/cjuegos')
 @login_required
 def creacion_juegos():
@@ -111,6 +111,29 @@ def crear_juego():
         return redirect(url_for('creacion_juegos'))
     except:
         return "no se pudo guardar"
+
+#Ruta para la modificacion de un juego
+@app.route('/mjuego/<int:id>', methods=['GET'])
+@login_required
+def modificar_juego(id):
+    game = juego.query.get(id)
+    return render_template('mjuegos.html', game = game)
+
+#ruta para la realizar la modificacion del juego
+@app.route('/modificar_juego/<int:id>', methods=['GET', 'POST'])
+@login_required
+def modificacion_juego(id):
+    id_a_actualizar = juego.query.filter_by(id = id).first()
+    if request.method == "POST": 
+        id_a_actualizar.nombre = request.form['nombre']
+        id_a_actualizar.descripcion = request.form['descripcion']
+        id_a_actualizar.sistema_juego = request.form['sistema_juego']
+        id_a_actualizar.imagen = request.form['imagen']
+        id_a_actualizar.url_gameplay = request.form['url_gameplay']
+        fecha = request.form['fecha_lanzamiento']
+        id_a_actualizar.fecha_lanzamiento = datetime.strptime(fecha,'%Y-%m-%d')
+        db.session.commit()
+        return redirect(url_for('creacion_juegos'))
 
 #ruta para la eliminacion de un jugo
 @app.route('/delete/<id>')
