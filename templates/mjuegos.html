@@ -38,8 +38,8 @@
           <img src="{{ url_for('static', filename='img/banner.jpeg') }}" alt="Banner de la pagina">
         </div>
     <main>
-        <div>
-            <div>
+        <div id="contenedor-juegos">
+            <div id="contenedor-formulario">
                 <form action="/modificar_juego/{{game.id}}" method="POST" class="form-style">
                     <input id="id_juego" type="hidden" name="id">
                     <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
@@ -51,18 +51,20 @@
                     <button type="submit"> Enviar </button>
                 </form>
             </div>
-            <ul id="representaciones">
-                <li id="juegos-guardados">
-                    <h1>{{game.id}}</h1>
-                    <h1>{{game.nombre}}</h1>
-                    <h1>{{game.descripcion}}</h1>
-                    <h1>{{game.sistema_juego}}</h1>
-                    <img src="{{game.imagen}}" alt="Imagen Cover de {{game.nombre}}">
-                    <iframe src="{{game.url_gameplay}}" title="{{game.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <h1>{{game.fecha_lanzamiento}}</h1>
-                </li>
-            </ul>
-            <div>
+            <div id="contenedor-presentaciones">
+                <ul id="representaciones">
+                    <li id="juegos-guardados">
+                        <h1>{{game.id}}</h1>
+                        <h1>{{game.nombre}}</h1>
+                        <p>{{game.descripcion}}</p>
+                        <h1>{{game.sistema_juego}}</h1>
+                        <div id="contenedor-imgvid">
+                            <img src="{{game.imagen}}" alt="Imagen Cover de {{game.nombre}}">
+                            <iframe src="{{game.url_gameplay}}" title="{{game.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <h1>{{game.fecha_lanzamiento}}</h1>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>    

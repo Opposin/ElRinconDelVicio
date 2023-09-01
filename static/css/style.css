@@ -307,19 +307,43 @@ iframe {
   width: 300px;
   height: 300px;
 }
-#representaciones{
+#contenedor-presentaciones{
   display: flex;
-  flex-direction: column;
+  flex-direction: row ;
   flex-wrap: wrap;
+}
+#representaciones{
+  padding: 2%;
 }
 #representaciones iframe{
   width: 200px;
   height: 200px;
 }
-#representaciones a{
-  color: black;
-}
 #representaciones img{
   width: 200px;
   height: 200px;
+}
+#juegos-guardados{
+  width: 400px;
+  height: 700px;
+  background-color: #D9D9D9;
+  border-radius: 5px;
+}
+#contenedor-imgvid{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin: 0%;
+}
+#juegos-guardados a{
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  width: 100%;
+}
+#juegos-guardados p{
+  height: 180px;
+  overflow: scroll;
 }

@@ -39,35 +39,37 @@
           <img src="{{ url_for('static', filename='img/banner.jpeg') }}" alt="Banner de la pagina">
         </div>
     <main>
-        <div>
-            <div>
-                <form action="/crear_juego/" method="POST" class="form-style">
-                  <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
-                  <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
-                  <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego">
-                  <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen">
-                  <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay">
-                  <input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
-                    <button type="submit"> Enviar </button>
-                </form>
-            </div>
-            <ul id="representaciones">
-                {% for juego in juegos %}
+        <div id="contenedor-juegos">
+          <div id="contenedor-formulario">
+              <form action="/crear_juego/" method="POST" class="form-style">
+                <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
+                <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
+                <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego">
+                <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen">
+                <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay">
+                <input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
+                  <button type="submit"> Enviar </button>
+              </form>
+          </div>
+          <div id="contenedor-presentaciones">
+              {% for juego in juegos %}
+               <ul id="representaciones">
                 <li id="juegos-guardados">
                     <h1>{{juego.id}}</h1>
                     <h1>{{juego.nombre}}</h1>
-                    <h1>{{juego.descripcion}}</h1>
+                    <p>{{juego.descripcion}}</p>
                     <h1>{{juego.sistema_juego}}</h1>
-                    <img src="{{juego.imagen}}" alt="Imagen Cover de {{juego.nombre}}">
-                    <iframe src="{{juego.url_gameplay}}" title="{{juego.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div id="contenedor-imgvid">
+                      <img src="{{juego.imagen}}" alt="Imagen Cover de {{juego.nombre}}">
+                      <iframe src="{{juego.url_gameplay}}" title="{{juego.nombre}} gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                     <h1>{{juego.fecha_lanzamiento}}</h1>
-                    <a href="/mjuego/{{juego.id}}">modificar</a>
-                    <a href="/delete/{{juego.id}}">delete</a>
+                    <a class="a-botton" href="/mjuego/{{juego.id}}">modificar</a>
+                    <a class="a-botton" href="/delete/{{juego.id}}">delete</a>
                 </li>
-                {% endfor %}
-            </ul>
-            <div>
-            </div>
+                </ul>
+              {% endfor %}
+          </div>
         </div>
     </main>    
 </body>
