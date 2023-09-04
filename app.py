@@ -86,6 +86,11 @@ def visualizar_juego(id):
     game = juego.query.get(id)
     return render_template('juego.html', game = game)
 
+@app.route('/compra/<int:id>', methods=['GET'])
+def visualizar_compra(id):
+    game = juego.query.get(id)
+    return render_template('compra.html', game = game)
+
 #ruta pagina general para ajustes de catalogo
 @app.route('/cjuegos')
 @login_required

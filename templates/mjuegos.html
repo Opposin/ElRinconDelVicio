@@ -41,13 +41,12 @@
         <div id="contenedor-juegos">
             <div id="contenedor-formulario">
                 <form action="/modificar_juego/{{game.id}}" method="POST" class="form-style">
-                    <input id="id_juego" type="hidden" name="id">
-                    <input id="1nombre" type="text" name="nombre" placeholder="Nombre">
-                    <input id="desc" type="text" name="descripcion" placeholder="Descripcion">
-                    <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego">
-                    <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen">
-                    <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay">
-                    <input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento">
+                    <p> Nombre del juego <input id="1nombre" type="text" name="nombre" placeholder="Nombre"> </p>
+                    <p> Descripcion del juego <input id="desc" type="text" name="descripcion" placeholder="Descripcion"></p>
+                    <p> Plataforma del juego <input id="sistema" type="text" name="sistema_juego" placeholder="sistema del juego"></p>
+                    <p> Imagen del juego <input id="imagen_juego" type="text" name="imagen" placeholder="URL de imagen"></p>
+                    <p> url del gameplay del juego <input id="url" type="text" name="url_gameplay" placeholder="URL de gameplay"></p>
+                    <p> Fecha de lanzamiento del juego<input id="fecha" type="date" name="fecha_lanzamiento" placeholder="fecha de lanzamiento"></p>
                     <button type="submit"> Enviar </button>
                 </form>
             </div>
@@ -74,6 +73,7 @@
         document.getElementById("sistema").defaultValue = "{{game.sistema_juego}}"; 
         document.getElementById("imagen_juego").defaultValue = "{{game.imagen}}"; 
         document.getElementById("url").defaultValue = "{{game.url_gameplay}}"; 
+        document.getElementById("fecha").defaultValue = "{{game.fecha_lanzamiento}}"; 
     </script>
 </body>
 </html>

@@ -7,8 +7,8 @@
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-    <script src="../js/script.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body class="body-style">
@@ -52,38 +52,35 @@
         <h3 class="centrar-texto">Playstation 2</h3>
       </div>
     </section>
-
+    
     <div id="contenedor-juegos">
       <h2 class="seccion">Juegos-PC</h2>
       <section class="juegos">
-        {% for juego in juegos %}
-          {% if juego.sistema_juego == "pc" %}
-            <img class="img-juego" src="{{ juego.imagen }}" alt="Imagen Cover de {{juego.nombre}}" onclick="javascript:window.location='/juego/{{juego.id}}';">
-          {% endif %}
-        {% endfor %}
-        <!--
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/halflife.jpg') }}" alt="Imagen Cover de Half-Life">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/cs.png') }}" alt="Imagen cover de Counter-strike">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/cod2.png') }}" alt="Imagen Cover de Call of duty 2">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/pathologic.jpg') }}" alt="Imagen cover de Pathologic">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/terraria.jpeg') }}" alt="Imagen cover de Terraria">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/lunky2.jpg') }}" alt="Imagen cover de Spelunky 2">
-        -->
+        <div class="swiper mySwiperPC">
+          <div class="swiper-wrapper">
+            {% for juego in juegos %}
+              {% if juego.sistema_juego == "pc" %}
+                <div class="swiper-slide" style="background-image: url('{{juego.imagen}}');">
+                  <button onclick="location.href='/juego/{{juego.id}}'">Comprar</button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
       </section>
-
       <h2 class="seccion">Juegos-PS2</h2>
       <section class="juegos">
-        {% for juego in juegos %}
-          {% if juego.sistema_juego == "ps2" %}
-            <img class="img-juego" src="{{ juego.imagen }}" alt="Imagen Cover de {{juego.nombre}}" onclick="javascript:window.location='/juego/{{juego.id}}';">
-          {% endif %}
-        {% endfor %}
-        <!--
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/sh2.jpg') }}" alt="Imagen Cover de Silent Hill 2">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/gow2.jpg') }}" alt="Imagen cover de God of War 2">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/siren.jpg') }}" alt="Imagen Cover de Siren">
-        <img class="img-juego" src="{{ url_for('static', filename='img/juegos/re4.png') }}" alt="Imagen cover de Resident evil 4">
-        -->
+        <div class="swiper mySwiperPS2">
+          <div class="swiper-wrapper">
+            {% for juego in juegos %}
+              {% if juego.sistema_juego == "ps2" %}
+                <div class="swiper-slide" style="background-image: url('{{juego.imagen}}');">
+                  <button onclick="location.href='/juego/{{juego.id}}'">Comprar</button>
+                </div>
+              {% endif %}
+            {% endfor %} 
+          </div>
+        </div>
       </section>
     </div>
   </div>
@@ -96,5 +93,7 @@
         <p class="copyright">Todos los Derechos Reservados 2023 &copy;</p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
 </body>
 </html>

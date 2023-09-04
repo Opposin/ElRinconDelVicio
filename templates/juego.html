@@ -47,7 +47,7 @@
             <img src="{{ game.imagen }}" alt="Imagen Cover de {{game.nombre}}">
             <h3>Fecha de salida: {{game.fecha_lanzamiento}}</h3>
             <h3>Disponible en: {{game.sistema_juego}}</h3>
-            <button onclick="location.href='https://store.steampowered.com/app/70/HalfLife/'">Comprar</button>
+            <button onclick="location.href='/compra/{{game.id}}'">Comprar</button>
         </div>
         <div class="der contenido-centrado">
             <h2>Descripcion</h2>

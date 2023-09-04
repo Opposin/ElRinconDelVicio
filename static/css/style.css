@@ -316,15 +316,15 @@ iframe {
   padding: 2%;
 }
 #representaciones iframe{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 #representaciones img{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 }
 #juegos-guardados{
-  width: 400px;
+  width: 300px;
   height: 700px;
   background-color: #D9D9D9;
   border-radius: 5px;
@@ -346,4 +346,39 @@ iframe {
 #juegos-guardados p{
   height: 180px;
   overflow: scroll;
+}
+#contenedor-formulario{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  align-items: center;
+  text-align: center;
+  justify-self: center
+}
+
+/* Carrusel */
+.swiper {
+  width: 100%;
+  max-width: none; 
+  margin: 0 auto; 
+}
+.swiper-slide {
+  background-image: center;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.swiper-slide img {
+  overflow: hidden;
+  display: block;
+  height: auto;
+  width: 100%;
+  /* max-width: 100%; */
+  /* max-height: 100%; */
+}
+
+@media(max-width:991px) {
+  body {
+    min-height: 0vh;
+  }
 }
