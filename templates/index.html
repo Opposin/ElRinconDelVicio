@@ -61,7 +61,7 @@
             {% for juego in juegos %}
               {% if juego.sistema_juego == "pc" %}
                 <div class="swiper-slide" style="background-image: url('{{juego.imagen}}');">
-                  <button onclick="location.href='/juego/{{juego.id}}'">Comprar</button>
+                  <button onclick="location.href='/juego/{{juego.id}}'">Visitar pagina</button>
                 </div>
               {% endif %}
             {% endfor %}
@@ -75,7 +75,7 @@
             {% for juego in juegos %}
               {% if juego.sistema_juego == "ps2" %}
                 <div class="swiper-slide" style="background-image: url('{{juego.imagen}}');">
-                  <button onclick="location.href='/juego/{{juego.id}}'">Comprar</button>
+                  <button onclick="location.href='/juego/{{juego.id}}'">Visitar pagina</button>
                 </div>
               {% endif %}
             {% endfor %} 

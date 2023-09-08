@@ -11,6 +11,7 @@
     width: 400px;
     padding-right: 2%;
     text-align: center;
+    height: 600px;
 }
 #contenedor-tarjeta{
     display: flex;
@@ -28,5 +29,20 @@
 .alineador{
     display: flex;
     flex-direction: column;
-    margin-left: 5px;
+    margin-left: 10px;
+}
+.alineador p{
+    margin-bottom: -2px;
+}
+#fecha_vencimiento{
+    width: 50px;
+}
+#codigo_seguridad{
+    width: 40px;
+}
+.fecha_cadd{
+    margin-left: 10px;
+}
+.error{
+    color: red;
 }
