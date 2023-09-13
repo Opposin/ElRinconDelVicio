@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <title>Pagina de compra de {{game.nombre}}</title>
-    <script src="{{ url_for('static', filename='/js/card.js') }}"></script>
 </head>
 <body class="body-style">
   <header id="main-header">
@@ -79,5 +78,6 @@
       </div>
     </section>
   </main>
+  <script src="{{ url_for('static', filename='/js/card.js') }}"></script>
 </body>
 </html>
