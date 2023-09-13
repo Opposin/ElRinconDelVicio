@@ -46,3 +46,8 @@
 .error{
     color: red;
 }
+#centrame_esto{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

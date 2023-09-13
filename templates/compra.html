@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     <title>Pagina de compra de {{game.nombre}}</title>
+    <script src="{{ url_for('static', filename='/js/card.js') }}"></script>
 </head>
 <body class="body-style">
   <header id="main-header">
@@ -45,7 +46,7 @@
       </div>
       <div id="contenedor-tarjeta">
         <div>
-          <form action="/juego/{{game.id}}" class="form-style" id="formulario_tarjeta" name="formulario_tarjeta">
+          <form action="/juego/{{game.id}}" id="formulario_tarjeta" name="formulario_tarjeta">
             <div id="contenedor-nombre">
               <div class="alineador formField" >
               <p> Apellido del propietario </p>
@@ -72,13 +73,11 @@
             </div>
             <p class="fecha_cadd"> Fecha de caducidad <input id="fecha_vencimiento" type="text" name="fecha_vencimiento" placeholder="09/23"></p>
             <small></small>
-            <button class="fecha_cadd" type="submit"> Enviar </button>
+            <button class="fecha_cadd" id="boton-envio" type="button" onclick="realizar_formulario()"> Enviar </button>
           </form>
         </div>
       </div>
     </section>
   </main>
-  <script src="{{ url_for('static', filename='/js/card.js') }}">
-  </script>
 </body>
 </html>

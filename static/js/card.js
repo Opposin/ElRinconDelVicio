@@ -5,8 +5,7 @@ const codigo_seguridadEL = document.querySelector('#codigo_seguridad');
 const fecha_vencimientoEL = document.querySelector('#fecha_vencimiento');
 
 const formulario = document.querySelector('#formulario_tarjeta');
-
-const formularioC = document.getElementById("formulario_tarjeta");
+const boton = document.querySelector('#boton-envio');
 
 
 const isRequired = value => value === '' ? false : true;
@@ -168,11 +167,8 @@ formulario.addEventListener('input', debounce(function (e) {
     }
 }));
 
-formulario.addEventListener('submit', function (e) {
-    // prevent the form from submitting
-    e.preventDefault();
-
-    // validate forms
+function realizar_formulario(){
+        // validate forms
     let isNameValid = checkName(),
         isSurnameValid = checkSurname(),
         isCardValid = checkCNumber(),
@@ -184,9 +180,9 @@ formulario.addEventListener('submit', function (e) {
         isCardValid &&
         isCodeValid &&
         isDateValid;
-
+    
     // submit to the server if the form is valid
-    if (isFormValid) {
-        formularioC.submit();
-    }
-});
+    //if (isFormValid == true) {
+    document.getElementById('formulario_tarjeta').submit();
+    //}
+}
