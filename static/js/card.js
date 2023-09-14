@@ -113,26 +113,6 @@ const checkSNumber = () => {
     return valid;
 };
 
-const checkDate = () => {
-
-    let valid = false;
-    const min = 4,
-        max = 4;
-    const fecha_vencimiento = fecha_vencimientoEL.value.trim();
-
-    if (!isRequired(fecha_vencimiento)) {
-        showError(fecha_vencimientoEL, 'El numero de tarjeta no puede estar vacio.');
-    } else if (isNaN(fecha_vencimiento)) {
-        showError(fecha_vencimientoEL, `La tarjeta solamente puede tener caracteres numericos.`)
-    } else if (!isBetween(fecha_vencimiento.length, min, max)) {
-        showError(fecha_vencimientoEL, `Numero de tarjeta no valido.`)
-    } else {
-        showSuccess(fecha_vencimientoEL);
-        valid = true;
-    }
-    return valid;
-};
-
 const debounce = (fn, delay = 500) => {
     let timeoutId;
     return (...args) => {
@@ -172,17 +152,32 @@ function realizar_formulario(){
     let isNameValid = checkName(),
         isSurnameValid = checkSurname(),
         isCardValid = checkCNumber(),
-        isCodeValid = checkSNumber(),
-        isDateValid = checkDate();
+        isCodeValid = checkSNumber();
 
     let isFormValid = isNameValid &&
         isSurnameValid &&
         isCardValid &&
-        isCodeValid &&
-        isDateValid;
+        isCodeValid;
     
     // submit to the server if the form is valid
-    //if (isFormValid == true) {
-    document.getElementById('formulario_tarjeta').submit();
-    //}
+    return isFormValid;
 }
+
+boton.addEventListener("click", function() {
+
+// submit to the server if the form is valid
+    //let valido = realizar_formulario();
+    let isNameValid = checkName();
+    let isSurnameValid = checkSurname();
+    let isCardValid = checkCNumber();
+    let isCodeValid = checkSNumber();
+
+    let isFormValid = isNameValid &&
+        isSurnameValid &&
+        isCardValid &&
+        isCodeValid;
+
+    if (isFormValid) {
+        document.getElementById("formulario_tarjeta").submit();
+    }
+}); 
