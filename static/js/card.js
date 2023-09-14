@@ -142,26 +142,11 @@ formulario.addEventListener('input', debounce(function (e) {
             checkSNumber();
             break;
         case 'fecha_vencimiento':
-            checkSNumber();
+            checkDate();
             break;
     }
 }));
 
-function realizar_formulario(){
-        // validate forms
-    let isNameValid = checkName(),
-        isSurnameValid = checkSurname(),
-        isCardValid = checkCNumber(),
-        isCodeValid = checkSNumber();
-
-    let isFormValid = isNameValid &&
-        isSurnameValid &&
-        isCardValid &&
-        isCodeValid;
-    
-    // submit to the server if the form is valid
-    return isFormValid;
-}
 
 boton.addEventListener("click", function() {
 

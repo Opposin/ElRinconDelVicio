@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 from datetime import datetime
@@ -91,10 +91,15 @@ def visualizar_compra(id):
     game = juego.query.get(id)
     return render_template('compra.html', game = game)
 
-@app.route('/comprado/<int:id>', methods=['GET'])
+@app.route('/comprado/<int:id>', methods=['GET', 'POST'])
 def visualizar_producto(id):
-    game = juego.query.get(id)
-    return render_template('comprado.html', game = game)
+    verificacion = request.form['REAL']
+    try:
+        if verificacion == "true":
+            game = juego.query.get(id)
+            return render_template('comprado.html', game = game)
+    except:
+        abort(400)
 
 #ruta pagina general para ajustes de catalogo
 @app.route('/cjuegos')

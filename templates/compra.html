@@ -45,7 +45,7 @@
       </div>
       <div id="contenedor-tarjeta">
         <div>
-          <form action="/comprado/{{game.id}}" id="formulario_tarjeta" name="formulario_tarjeta">
+          <form action="/comprado/{{game.id}}" id="formulario_tarjeta" name="formulario_tarjeta" method="POST">
             <div id="contenedor-nombre">
               <div class="alineador formField" >
               <p> Apellido del propietario </p>
@@ -66,6 +66,7 @@
               </div>
               <div class="alineador formField">
               <p> Numero de seguridad </p>
+              <input id="REAL" type="hidden" name="REAL" value="true">
               <input id="codigo_seguridad" type="text" name="codigo_seguridad" placeholder="800">
               <small></small>
               </div>
