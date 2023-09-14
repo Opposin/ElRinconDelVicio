@@ -150,8 +150,6 @@ formulario.addEventListener('input', debounce(function (e) {
 
 boton.addEventListener("click", function() {
 
-// submit to the server if the form is valid
-    //let valido = realizar_formulario();
     let isNameValid = checkName();
     let isSurnameValid = checkSurname();
     let isCardValid = checkCNumber();

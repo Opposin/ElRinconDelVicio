@@ -34,14 +34,15 @@
 .alineador p{
     margin-bottom: -2px;
 }
+.alineador button{
+    margin-left: 30%;
+    width: 200px;
+}
 #fecha_vencimiento{
     width: 50px;
 }
 #codigo_seguridad{
     width: 40px;
-}
-.fecha_cadd{
-    margin-left: 10px;
 }
 .error{
     color: red;
