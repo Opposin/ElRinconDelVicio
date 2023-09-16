@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
+from waitress import serve
 from datetime import datetime
 import os
 
@@ -166,5 +167,6 @@ def unauthorized_callback():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port=50100, threads=4)
+    #app.run(debug=False)
     

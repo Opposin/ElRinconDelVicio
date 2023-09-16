@@ -113,6 +113,26 @@ const checkSNumber = () => {
     return valid;
 };
 
+const checkDNumber = () => {
+
+    let valid = false;
+    const min = 4,
+        max = 4;
+    const fecha_vencimiento = fecha_vencimientoEL.value.trim();
+
+    if (!isRequired(fecha_vencimiento)) {
+        showError(fecha_vencimientoEL, 'El numero de tarjeta no puede estar vacio.');
+    } else if (isNaN(fecha_vencimiento)) {
+        showError(fecha_vencimientoEL, `La tarjeta solamente puede tener caracteres numericos.`)
+    } else if (!isBetween(fecha_vencimiento.length, min, max)) {
+        showError(fecha_vencimientoEL, `Numero de tarjeta no valido.`)
+    } else {
+        showSuccess(fecha_vencimientoEL);
+        valid = true;
+    }
+    return valid;
+};
+
 const debounce = (fn, delay = 500) => {
     let timeoutId;
     return (...args) => {
@@ -142,7 +162,7 @@ formulario.addEventListener('input', debounce(function (e) {
             checkSNumber();
             break;
         case 'fecha_vencimiento':
-            checkDate();
+            checkDNumber();
             break;
     }
 }));
